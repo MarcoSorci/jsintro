@@ -24,10 +24,10 @@ console.log("log var", numbah2);
 numbah2 = 1224
 console.log("log var2", numbah2);
 
-let poo = "mycooch"
-console.log(poo);
+let asd = "asdasdasd"
+console.log(asd);
 
-let poo0, pooo, poooo;
+let asd0, asdd, asdas;
 let operazione = 5 + 6;
 
 console.log("log operazione", operazione);
@@ -121,21 +121,25 @@ for (let indexx = 0; indexx <= 100; indexx++) {
         str += "Fizz"
     }
 
-    if (indexx % 5 === 0){
+    if (indexx % 5 === 0) {
         str += "Buzz"
     }
-        
+
     console.log(str.length > 0 ? str : indexx);
 }
 
 //ESERCIZIO
 let grid = ""
 
-for (let indexxx = 0; indexxx < 8; indexxx++) {
-    for (let jizz = 0; jizz < 8; jizz++) {
-        grid += "#"
+for (let hash1 = 0; hash1 < 8; hash1++) {
+    for (let hash2 = 0; hash2 < 8; hash2++) {
+        if ((hash1 + hash2) % 2) {
+            grid += "#"
+        } else {
+            grid += " "
+        }
     }
-    grid+="\n"
+    grid += "\n"
 }
 
 console.log(grid);
