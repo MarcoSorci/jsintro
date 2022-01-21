@@ -129,10 +129,13 @@ for (let indexx = 0; indexx <= 100; indexx++) {
 }
 
 //ESERCIZIO
+
 let grid = ""
 
-for (let hash1 = 0; hash1 < 8; hash1++) {
-    for (let hash2 = 0; hash2 < 8; hash2++) {
+let size = 8
+
+for (let hash1 = 0; hash1 < size; hash1++) {
+    for (let hash2 = 0; hash2 < size; hash2++) {
         if ((hash1 + hash2) % 2) {
             grid += "#"
         } else {
@@ -144,4 +147,60 @@ for (let hash1 = 0; hash1 < 8; hash1++) {
 
 console.log(grid);
 
+//OTHER SOLUTION
 
+// let grid = ""
+
+// let size = 8
+
+// for (let hash1 = 0; hash1 < size; hash1++) {
+//     for (let hash2 = 0; hash2 < size; hash2++) {
+//         if (hash1 % 2 === 0) {
+//             if (hash2 % 2 === 0) {
+//                 grid += " ";
+//             } else {
+//                 grid += "#";
+//             }
+//         } else {
+//             if (hash2 % 2 === 0) {
+//                 grid += "#";
+//             } else {
+//                 grid += " ";
+//             }
+//         }
+//     }
+//     grid += "\n"
+// }
+
+// console.log(grid);
+
+//OTHER SOLUTION 2
+
+// let grid2 = ""
+// let size2 = 10
+
+// for (let i2 = 0; i2 < size2; i2++) {
+//     for (let j2 = 0; j2 < size2; j2++) {
+//         grid2 += (i2 % 2 === 0) ? ((j2 % 2 === 0) ? " " : "#") : ((j2 % 2 === 0) ? "#" : " ");
+//     }
+//     grid2 += "\n"
+// }
+
+// console.log(grid2);
+
+
+let type = 37
+
+switch (true) {
+    case (type > 10):
+        console.log("Cosmetico comprato");
+    case (type > 20):
+        console.log("Balsamo comprato");
+        break;
+    case 2:
+        console.log("Shampoo comprato");
+        break;
+    default:
+        console.log("errore di tipologia");
+        break;
+}
