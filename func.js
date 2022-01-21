@@ -247,3 +247,24 @@ console.log(countChar("kaKKkerlak", "k", true));
 //2)funzione fibonacci non ricorsiva
 //3)funzione che dato un numero individui la sua posizione nella successione di fibonacci
 //4)implementare con ricorsione la funzione fattoriale (5! = 5*4*3*2*1) (N! = N*(N-1))
+
+let fib1 = 0, fib2= 1, sumfib
+for (let fibcounter = 1; fibcounter <= number; fibcounter++) {
+    console.log(fib1);
+    sumfib = fib1 + fib2;
+    fib1 = fib2;
+    fib2 = sumfib;
+}
+
+
+// function fibonacci(number) {
+//     if (number === 0) {
+//         return 0;                        //return breaks function
+//     }
+//     if (number === 1) {
+//         return 1;
+//     }
+//     return fibonacci(number - 1) + fibonacci(number - 2)
+// }
+
+// console.log(fibonacci(7));
