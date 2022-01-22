@@ -203,9 +203,9 @@ function countBs(str) {
     let Bcounter = 0
     let i = 0                   //limiter
     while (i < str.length) {    //while limiter is less than the length of the string
-        if ((str[i] === "B")||(str[i] === "b")) {
+        if ((str[i] === "B") || (str[i] === "b")) {
             Bcounter++;
-        } 
+        }
         i++
     } return Bcounter
 }
@@ -219,7 +219,7 @@ console.log(countBs("BabbBBC"));
 //         if (str[i] === "B"){
 //             counter++
 //         }
-        
+
 //     }
 //     return counter;
 // }
@@ -231,12 +231,12 @@ function countChar(str, char, caseSensitive) {
         char = char.toLowercase();
     }
     let counter = 0
-    for (let j = 0; j <= str.length -1; j++) {
-        if (str[j] === char){
+    for (let j = 0; j <= str.length - 1; j++) {
+        if (str[j] === char) {
             counter++
         }
-        
-    }                     
+
+    }
     return counter
 }
 
@@ -247,24 +247,61 @@ console.log(countChar("kaKKkerlak", "k", true));
 //2)funzione fibonacci non ricorsiva
 //3)funzione che dato un numero individui la sua posizione nella successione di fibonacci
 //4)implementare con ricorsione la funzione fattoriale (5! = 5*4*3*2*1) (N! = N*(N-1))
+console.log("Compito1"); //funzione non ricorsiva che scriva i primi 100 numeri della successione di fibonacci
 
-let fib1 = 0, fib2= 1, sumfib
+
+let fib1 = 0, fib2 = 1, sumfib = 0, number = 98
+console.log(fib1);
+console.log(fib2);
 for (let fibcounter = 1; fibcounter <= number; fibcounter++) {
-    console.log(fib1);
     sumfib = fib1 + fib2;
     fib1 = fib2;
     fib2 = sumfib;
+    console.log(sumfib);
 }
 
 
-// function fibonacci(number) {
-//     if (number === 0) {
-//         return 0;                        //return breaks function
+console.log("Compito2"); //funzione fibonacci non ricorsiva
+
+let fib3 = 0, fib4 = 1, sumfib2 = 0;
+
+console.log(fib3);
+console.log(fib4);
+function fibnonrecursive(number2) {
+    for (let fibcounter2 = 1; fibcounter2 <= number2; fibcounter2++) {
+        sumfib2 = fib3 + fib4;
+        fib3 = fib4;
+        fib4 = sumfib2;
+        console.log(sumfib2);
+    }
+}
+console.log(fibnonrecursive(10));
+
+
+console.log('Compito3'); //funzione che dato un numero individui la sua posizione nella successione di fibonacci
+
+// function fibcall(numb) {
+//     if (numb === 0) {
+//         return 0;
 //     }
-//     if (number === 1) {
+//     if (numb === 1) {
 //         return 1;
 //     }
-//     return fibonacci(number - 1) + fibonacci(number - 2)
+//     return fibcall(numb - 1) + fibcall(numb - 2)
 // }
 
-// console.log(fibonacci(7));
+// console.log(fibcall(10));
+
+
+
+console.log('Compito4'); //implementare con ricorsione la funzione fattoriale (5! = 5*4*3*2*1) (N! = N*(N-1))
+
+function factorial(number) {
+    if (number === 0)
+        return 1;
+    else {
+        return (number * factorial(number - 1));
+    }
+}
+
+console.log(factorial(5));
