@@ -91,7 +91,7 @@ for (let k = 0; k < 10; k++) {
 
 }
 //k++ is the same as k=k+1
-//idem con patate per il --
+//idem per il --
 //can use k+=2 to add 2 or any other number, same for k-=2
 
 

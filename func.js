@@ -179,7 +179,7 @@ function isEven(number) {
         return false;
     }
     if (number > 0) {
-        return isEven(number - 2)
+        return isEven(number - 2)  //it keeps removing/adding 2 until you get 0 or 1
     } else {
         return isEven(number + 2)
     }
@@ -203,7 +203,8 @@ function countBs(str) {
     let Bcounter = 0
     let i = 0                   //limiter
     while (i < str.length) {    //while limiter is less than the length of the string
-        if ((str[i] === "B") || (str[i] === "b")) {
+        if ((str[i] === "B") || (str[i] === "b")) {    //SQ BRACKETS MEAN "Nth LETTER OF", 
+            //0th (value of i) letter of str, then 1st letter of str, then 2nd etc
             Bcounter++;
         }
         i++
@@ -232,7 +233,8 @@ function countChar(str, char, caseSensitive) {
     }
     let counter = 0
     for (let j = 0; j <= str.length - 1; j++) {
-        if (str[j] === char) {
+        if (str[j] === char) {  //SQ BRACKETS MEAN "Nth LETTER OF", 
+            //0th (value of j) letter of str, then 1st letter of str, then 2nd etc
             counter++
         }
 
