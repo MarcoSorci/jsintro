@@ -1,0 +1,22 @@
+{
+    "name": "Andrea",
+    "surname": "Asioli",
+    "class di cui è docente": {
+        "name": "programmazione frontend",
+        "students": [
+            {
+                "name": "poop",
+                "surname": "caio",
+                "yob": 1580,
+                "married": false,
+                "titolodistudio": "Diploma di maturità"
+            },
+            {
+                "name": "tizia",
+                "surname": "caia",
+                "yob": 2444,
+                "married": false
+            }
+        ]
+    }
+}

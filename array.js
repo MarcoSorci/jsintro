@@ -70,7 +70,8 @@ function longeststring(...strings) {
 console.log(longeststring("piiii", "paaaaaaaa", "pooo"));
 
 function max(...numbers) {    //spread allows you to input as many as you want **, as opposed to each individual parameter 
-    let maxnumber = -Infinity;
+  //let maxnumber = -Infinity //checks for negatives too
+    let maxnumber = numbers[0]; //[0]makes the first the biggest, then compares to others
     for (let i = 0; i < numbers.length; i++) {  //cycles only for the length of the array with .length
         const element = numbers[i];
         if (maxnumber < element) {
@@ -81,3 +82,64 @@ function max(...numbers) {    //spread allows you to input as many as you want *
 }
 
 console.log(max(-17, -100, -10, -3, -2790)); //**here
+
+/*
+1)math min
+2)function with param num positivo, returns array with numbers from 0 to N
+3)function with an array of strings as param, returns array of strings with its initials
+*/
+
+//Esercizio 1
+
+function min(...numbers) {    
+      let minnumber = Infinity; 
+      for (let i = 0; i < numbers.length; i++) {  
+          const element = numbers[i];
+          if (minnumber > element) {
+              minnumber = element;
+          }
+      }
+      return minnumber
+  }
+  
+  console.log(min(-17, -100, -10, -3, 2790));
+  
+//Esercizio 2
+
+// function range(num) {
+//       let arr = [num];
+//       for (let i = 0; i <= num; i++) {
+//           const element = arr[i];
+//           arr.unshift(i)
+//       }
+//     let initialnumber = arr.pop()
+//     console.log(initialnumber);
+//     return arr.reverse();
+// }
+function range(maxnumber) {
+    let arr = [];
+    for (let i = 0; i <= maxnumber; i++) {
+        arr.push(i)      
+    }
+    return arr
+}
+
+
+console.log(range(9));
+
+//Esercizio 3
+
+function startingchar(strarray) {
+    let init = []
+    for (const element of strarray) {
+        if (element !== "") { //if element is not empty
+        init.push(element[0])
+        }
+    }
+    return init
+}
+
+let strings = ["Cosenza", "Genova", "Alessandria", "", "Milano"]
+console.log(startingchar(strings));
+
+//Compiti, the sum of a range, then reversearray
