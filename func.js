@@ -316,7 +316,7 @@ console.log(fibcall(21));
 
 
 
-console.log('Compito4'); //implementare con ricorsione la funzione fattoriale (5! = 5*4*3*2*1) (N! = N*(N-1)!)
+console.log('Compito4'); //implementare con ricorsione la  fattoriale (5! = 5*4*3*2*1) (N! = N*(N-1)!)
 
 function factorial(number) {
     if (number === 0)
@@ -327,3 +327,23 @@ function factorial(number) {
 }
 
 console.log(factorial(3));
+
+
+
+console.log("fattoriale non recorsivo");
+
+function factorialnonrecursive(numberz) {
+
+    let fact = 1, results = 1;
+    if (numberz === 0)
+        return 1;
+    if (numberz === 1)
+        return 1;
+    for (let i = 1; i <= numberz; i++) {  //variables defined inside a FOR are forgotten at its end
+        results = results * fact;
+        fact++;
+    }
+    return results;
+}
+
+console.log(factorialnonrecursive(5));
