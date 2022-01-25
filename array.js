@@ -15,21 +15,21 @@ for (const element of secondArray) {  //FOROF, short version of that one up top,
     console.log(element);
 }
 
-secondArray.push("the last one")  //is put at the end of the stack, normally is LIFO
+secondArray.push("the last one")  //PUSH is put at the end of the stack, normally is LIFO
 
 console.log(secondArray);
 
-let lastelement = secondArray.pop()   //removes item from end of the stack, naming it lets you pick it again
+let lastelement = secondArray.pop()   // POP removes item from end of the stack, naming it lets you pick it again
 
 console.log(secondArray);
 console.log(lastelement);
 
-let firstelement = secondArray.shift()  //removes first element
+let firstelement = secondArray.shift()  //SHIFT removes first element
 
 console.log(secondArray);
 console.log(firstelement);
 
-secondArray.unshift("the first one")  //adds first element
+secondArray.unshift("the first one")  //UNSHIFT adds first element
 console.log(secondArray);
 
 console.log(secondArray[1]); //starts counting from 0
@@ -45,7 +45,7 @@ console.log(subArray);
 
 console.log(thirdArray);
 
-let  subArray2 = thirdArray.splice(2, 3, 12, 13, 14) //actually cuts it, while slice just copies
+let subArray2 = thirdArray.splice(2, 3, 12, 13, 14) //actually cuts it, while slice just copies
 
 console.log(subArray2);
 
@@ -70,7 +70,7 @@ function longeststring(...strings) {
 console.log(longeststring("piiii", "paaaaaaaa", "pooo"));
 
 function max(...numbers) {    //spread allows you to input as many as you want **, as opposed to each individual parameter 
-  //let maxnumber = -Infinity //checks for negatives too
+    //let maxnumber = -Infinity //checks for negatives too
     let maxnumber = numbers[0]; //[0]makes the first the biggest, then compares to others
     for (let i = 0; i < numbers.length; i++) {  //cycles only for the length of the array with .length
         const element = numbers[i];
@@ -91,19 +91,19 @@ console.log(max(-17, -100, -10, -3, -2790)); //**here
 
 //Esercizio 1
 
-function min(...numbers) {    
-      let minnumber = Infinity; 
-      for (let i = 0; i < numbers.length; i++) {  
-          const element = numbers[i];
-          if (minnumber > element) {
-              minnumber = element;
-          }
-      }
-      return minnumber
-  }
-  
-  console.log(min(-17, -100, -10, -3, 2790));
-  
+function min(...numbers) {
+    let minnumber = Infinity;
+    for (let i = 0; i < numbers.length; i++) {
+        const element = numbers[i];
+        if (minnumber > element) {
+            minnumber = element;
+        }
+    }
+    return minnumber
+}
+
+console.log(min(-17, -100, -10, -3, 2790));
+
 //Esercizio 2
 
 // function range(num) {
@@ -119,7 +119,7 @@ function min(...numbers) {
 function range(maxnumber) {
     let arr = [];
     for (let i = 0; i <= maxnumber; i++) {
-        arr.push(i)      
+        arr.push(i)
     }
     return arr
 }
@@ -133,7 +133,7 @@ function startingchar(strarray) {
     let init = []
     for (const element of strarray) {
         if (element !== "") { //if element is not empty
-        init.push(element[0])
+            init.push(element[0])
         }
     }
     return init
@@ -143,3 +143,55 @@ let strings = ["Cosenza", "Genova", "Alessandria", "", "Milano"]
 console.log(startingchar(strings));
 
 //Compiti, the sum of a range, then reversearray
+
+console.log("SUM OF A RANGE");
+let arrex = [];
+let step = -1
+function rangex(start, end, step) {
+    if (step < 0) {
+
+    } else {
+
+    }
+    for (let i = start; i <= end; i++) {
+        arrex.push(i)
+        i = i + step
+    }
+    return arrex
+}
+
+console.log(rangex(1, 10, 2));
+
+function sum(...numbers) {
+    for (let i = 0; i < arrex.length; i++) {
+        rangex[i] + rangex[i + 1]
+    }
+    return sum
+}
+
+console.log(sum(rangex(1, 10)));
+
+console.log("REVERSE ARRAY");
+
+function reverseArray(arr) {   //ask why the spread operator isn't working/needed here
+    let arr1 = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+        arr1.push(arr[i]);
+    }
+    return arr1
+}
+
+console.log(reverseArray(["A", "B", "C"]));
+
+
+let arrayValue = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+function reverseArrayInPlace(arr) {   
+    for (let i = 0; i <= ((arr.length -1) / 2); i++) {
+        let heldelement = arr[i];
+        arr[i] = arr[arr.length - 1 - i];
+        arr[arr.length - 1 - i] = heldelement
+    }
+    return arr
+}
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
