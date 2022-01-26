@@ -146,52 +146,87 @@ console.log(startingchar(strings));
 
 console.log("SUM OF A RANGE");
 let arrex = [];
-let step = -1
-function rangex(start, end, step) {
-    if (step < 0) {
-
-    } else {
-
-    }
-    for (let i = start; i <= end; i++) {
+let step = 1
+// function rangex(start, end, step) {
+//     for (let i = start; i <= end; i++) {
+//         arrex.push(i)
+//         i = i + step - 1
+//     }
+//     return arrex
+// }
+function rangex(min = 0, max, step) {
+    let start = step > 0 ? min : max
+    // let end;
+    // if (step > 0) {
+    //     end = max;
+    // } else {
+    //     end = min;
+    // }
+    for (let i = start; i <= max; i += step) {
         arrex.push(i)
-        i = i + step
     }
     return arrex
 }
 
-console.log(rangex(1, 10, 2));
+console.log(rangex(1, 10, 1));
 
-function sum(...numbers) {
-    for (let i = 0; i < arrex.length; i++) {
-        rangex[i] + rangex[i + 1]
+
+function sumarray(numbers) {
+
+    let result = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+        // const element = number[i];
+        result += numbers[i];
     }
-    return sum
+    return result
 }
 
-console.log(sum(rangex(1, 10)));
+console.log(sumarray(rangex(5)));
 
 console.log("REVERSE ARRAY");
 
-function reverseArray(arr) {   //ask why the spread operator isn't working/needed here
+function reverseArray(arr) {
     let arr1 = [];
     for (let i = arr.length - 1; i >= 0; i--) {
-        arr1.push(arr[i]);
+        arr1.push(arr[i]);  //const element = array[i]; then, arr1.push(element)
     }
     return arr1
+
+    // for (const number of arr) {   //more elegant
+    //     arr1.unshift(number)
+    // }
+    // return arr1
 }
 
-console.log(reverseArray(["A", "B", "C"]));
+console.log(reverseArray(["A", "B", "C", "D"]));
+
+let array = [1, 2, 3, 4, 5, 6, 7]
+
+function reverseArrayInPlace(arr) {
+    // array = reverseArray(array);    //waaay easier, not what's asked but easier 
+    // let rev = reverseArray(arr)
+    // arr.length = 0;
+    // arr.push(...rev)
 
 
-let arrayValue = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-function reverseArrayInPlace(arr) {   
-    for (let i = 0; i <= ((arr.length -1) / 2); i++) {
+    for (let i = 0; i < arr.length / 2; i++) {
         let heldelement = arr[i];
         arr[i] = arr[arr.length - 1 - i];
         arr[arr.length - 1 - i] = heldelement
     }
     return arr
+
+    // for (let i = 0; i < arr.length / 2; i++) {
+    //     // const headelem = arr[i];
+    //     // const tailelem = arr[arr.length - 1 - i];
+    //     // let temp = headelem;
+    //     // headelem = tailelem;
+    //     // tailelem = temp
+    //     let temp = arr[i]
+    //     arr[i] =  arr[arr.length - 1 - i]
+    //     arr[arr.length - 1 - i] = temp;
+    //}
 }
-reverseArrayInPlace(arrayValue);
-console.log(arrayValue);
+reverseArrayInPlace(array);
+console.log(array);
