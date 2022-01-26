@@ -230,3 +230,41 @@ function reverseArrayInPlace(arr) {
 }
 reverseArrayInPlace(array);
 console.log(array);
+
+
+let array5 = [7, 4, 100, 12];
+function doublefirstelement(array) {
+
+    // let temparray = [];
+    // for (let i = 0; i < array.length; i++) {
+    //     temparray.push(array[i])
+    // }
+    // temparray[0] = temparray[0] * 2;
+    // return temparray
+
+    let temparray = [...array];
+    temparray[0] = temparray[0] * 2;
+    return temparray
+
+    array[0] = array[0] * 2;
+    return array
+}
+
+let newarray = doublefirstelement(array5)
+console.log(array5);      //when array is edited the reference is edited as well, if not wanted needs clone
+console.log(newarray);
+
+
+let finalarray = [23, 13, 5, 12]
+// function sumfirst4elementsofarray(array) {
+//     return array[0] + array[1] + array[2] + array[3]
+// }
+function sumfirst4elementsofarray([el0, el1, el2, el3]) {  //different spelling of the same
+    return el0 + el1 + el2 + el3
+}
+
+let lastelementz = {value: 5, nextelement: null}
+let secondelementz = {value: 7, nextelement: lastelementz}
+let firstelementz = {value: 5, nextelement: secondelementz}
+
+console.log(firstelementz.value, firstelementz.nextelement.value, firstelementz.nextelement.nextelement.value,);
