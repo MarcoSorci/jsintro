@@ -54,7 +54,7 @@ console.log(myfirstnode);
 // }
 
 while (node !== null) {
-    console.log(node.value);
+    console.log(node.value);   //same as the one above
     node = node.next;
 }
 
@@ -64,18 +64,43 @@ while (node2 !== null) {
     console.log(node2.value);
     node2 = node2.prev;
 }
+//come viene fatto nel libro ↓
+for (let node = first; node !== null; node = node.next) {  //node !== null è uguale a solo node, asks if true by default
+    console.log(node);
+}
+
+let el1 = { value: "tizio", rest: null }
+let el2 = { value: "caio", rest: el1 }
+let el3 = { value: "sempronio", rest: el2 }
+console.log(el3);
+let ela = { value: "poo", rest: el3 }
+let elb = { value: "poooop", rest: el3 }
+console.log(ela);
+console.log(elb);
+
+
+
+
+
 
 console.log("COMPITO 1 - linked list");
 
 function arraytolinkedlist(array) {
-    let linklist = null
-    for (let i = array.length - 1; i >= 0; i--) {
-        linklist = { value: array[i], next: linklist }
+    let firstnode;
+    for (let i = array.length - 1; i >= 0; i--) {    //length - 1 perchè si conta da 0 (1,2,3 il 3 è 2)
+        // let rest
+        // if (firstnode === null) {
+        //     rest === null
+        // } else {
+        //     rest = firstnode
+        // }
+        let node = { value: array[i], rest: firstnode };
+        firstnode = node;
     }
-    return linklist
+    return firstnode
 }
 
-console.log(arraytolinkedlist([10, 20]));
+console.log(arraytolinkedlist([1, 2, 3]));
 
 /*
 i = 2-1(1), if i is bigger/equal than 0, i-1(2-1=1) 
@@ -84,8 +109,10 @@ linklist = {value: array[1] which is 10, next linklist which is {value: 20, next
 
 function linkedlisttoarray(list) {
     let array = [];
-    for (let node = list; node; node = node.next) {
-        array.push(node.value);
+    let node = list
+    while (node != null) {
+        array.push(node.value)
+        node = node.next
     }
     return array;
 }
@@ -94,15 +121,53 @@ console.log(linkedlisttoarray(arraytolinkedlist([10, 20, 30])));
 function prepend(value, list) {
     return { value, next: list };  //the {} makes new list
 }
+let elc = prepend("ciccia", elb) //ties it to elb at the start
+console.log(elc);
 
-console.log(prepend(10, prepend(20, null)));  //is returning a new list with value 20 and next null
+console.log(prepend(10, prepend(20, null)));  //is returning a new list with value 10 and next, value 20 next null
 
 function nth(list, number) {   //supposed to return the position (number) in the list
-    if (!list) return undefined;  //if no list returns undefined, all the IF properties are optional
-    else if (number == 0) return list.value; //if number's 0 gives value which is 0 by default
-    else return nth(list.next, number - 1); //why -1???? wtf
+    if (!list) {
+        return undefined
+    };  //if no list (list===null) returns undefined, all the IF properties are optional
+    if (number == 0) {
+        return list.value
+    }; //if number's 0 gives first element value which is 0 by default
+    return nth(list.next, number - 1); //-1 because it's next and also starts count from 0 always
 }
+function nth2(list, index, startindex) {
+    if (list === null) {
+        return undefined
+    }
+    if (startindex === index) {
+        return list.value
+    }
+    let node = list.next
+    startindex++
+    return nth2(node, index, startindex)
+}
+// function nth3(listnode, index) {
+//     if (!list) {
+//         return undefined
+//     } else 
+// }
 
+console.log(linkedlisttoarray(elc));
+console.log(nth(elc, 12));
+// console.log(nth2(elc, 3, 0));
+
+// function nth(listnode, index) {
+//     let node = listnode
+//     let actualindex = 0
+//     while (node !== null) {
+//         if (actualindex === index) {
+//             return node.value
+//         }
+//         node = node.next
+//         actualindex++
+//     }
+//     return undefined
+// }
 console.log(nth(arraytolinkedlist([10, 20, 30]), 2));
 
 

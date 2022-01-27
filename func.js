@@ -1,6 +1,6 @@
 console.log(divideByTwo(6));
 
-function divideByTwo(number) {  //always name function
+function divideByTwo(number) {  //always name function, can name the same as long as there's a different amount of params!
     let result = number / 2;
     console.log(result);
 }
