@@ -152,8 +152,8 @@ function nth2(list, index, startindex) {
 //     } else 
 // }
 
-console.log(linkedlisttoarray(elc));
-console.log(nth(elc, 12));
+// console.log(linkedlisttoarray(elc));
+// console.log(nth(elc, 12));
 // console.log(nth2(elc, 3, 0));
 
 // function nth(listnode, index) {
@@ -169,7 +169,6 @@ console.log(nth(elc, 12));
 //     return undefined
 // }
 console.log(nth(arraytolinkedlist([10, 20, 30]), 2));
-
 
 console.log("COMPITO 2 - deep copy");
 
