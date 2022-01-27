@@ -145,5 +145,3 @@ const name1 = "oswald"
 let baby = {age, name: name1} //can omit x: y by defining earlier
 
 console.log(baby);
-
-//linked list, deep comparison

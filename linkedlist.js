@@ -288,7 +288,7 @@ console.log(addtoarray(array2, 3))
 
 let array = [1, 2, true, 3, "pippo", false]
 
-function cleanarray(type){
+function cleanarray(type) {
     let newarray = []
     for (let i = 0; i < array.length; i++) {
         if (typeof array[i] === type) {
@@ -298,3 +298,37 @@ function cleanarray(type){
 }
 
 console.log(cleanarray("string"));
+
+//compito
+
+let arrayc = [100, 101, 9, 1000, 12, -3]
+
+
+function filtergreaterthan100(array) {
+    let hundredarray = []
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] < 100) {
+            hundredarray.push(array[i])
+        }
+    } return hundredarray
+}
+
+console.log(filtergreaterthan100(arrayc));
+
+function greaterthan30(number) {
+    if (number > 30) {
+        return true
+    }
+}
+
+function filtergreaterthan30(array) {
+    let thirtyarray = []
+    for (let i = 0; i < array.length; i++) {
+        if (greaterthan30(array[i]) === true) {
+            thirtyarray.push(array[i])
+        }
+    } return thirtyarray
+}
+
+console.log(filtergreaterthan30(arrayc));
+
