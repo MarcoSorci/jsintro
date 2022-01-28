@@ -128,16 +128,16 @@ let arrayc = [100, 101, 9, 1000, 12, -3, -454]
 
 
 function filtergreaterthan100(array) {
-    let hundredarray = []
+    let hundtestarray1 = []
     // for (let i = 0; i < array.length; i++) {
     //     if (array[i] < 100) {
-    //         hundredarray.push(array[i])
+    //         hundtestarray1.push(array[i])
     //     }
     for (const element of array) {
         if (element <= 100) {
-            hundredarray.push(element)
+            hundtestarray1.push(element)
         }
-    } return hundredarray
+    } return hundtestarray1
 }
 
 console.log(filtergreaterthan100(arrayc));
@@ -271,4 +271,116 @@ console.log(arrayc.map(function (element, index) { return element * index }));
 console.log(arrayc.map((e, i) => e * i));
 
 console.log(arrayc.map(elementindexproduct)
-                  .filter(isnegative));
+    .filter(isnegative));
+
+
+///////////////////////////
+
+let testarray1 = [12, 57, 1001, -67, -12, 5, 37, 48, -6000]
+let testarray2 = ["pippo", "pluto", "paperino", "topolino", "paperone", "paperoga"]
+
+let filtetestarray11 = testarray1.filter((element) => element % 3 === 0);
+let filtetestarray11a = testarray1.filter(function (element) {
+    return element % 3 === 0
+})
+//keep all numbers divisible by 3
+
+let filtetestarray12 = testarray2.filter(element => element.length > 6);
+let filtetestarray12a = testarray2.filter(function (element) {
+    return element.length > 6
+})
+//keep all strings longer than 6 chars
+
+let mappedarray1 = testarray1.map(element => element - (element * 10 / 100));  //oppure * 0.9 
+let mappedarray1a = testarray1.map(function (element) {
+    return element - (element * 10 / 100)
+})
+//     let increment = element * 10 / 100
+//     return element - increment
+// })
+// //all numbers must be reduced by 10%
+
+let mappedarray2 = testarray2.map(element => element.toUpperCase())
+let mappedarray2a = testarray2.map(function (element) {
+    return element.toUpperCase()
+})
+//all strings must be capitalized
+
+let modifiedarray1 = testarray1.map(element => {
+    if (element < 0) {
+        element = element * -1
+    } return element
+}).filter((element) => element <= 100)
+//all numbers will turn positive + remove numbers > 100
+
+let modifiedarray2 = testarray2.map(element => element.charAt(0).toUpperCase() + element.substring(1))
+    .filter((element) => element.toLowerCase().includes("r"))  //tolowercase includes capitalized R too
+
+// //all strings capitalize first letter + remove strings w/o letter R
+
+console.log(filtetestarray11);
+console.log(filtetestarray11a);
+console.log(filtetestarray12);
+console.log(filtetestarray12a);
+console.log(mappedarray1);
+console.log(mappedarray1a);
+console.log(mappedarray2);
+console.log(mappedarray2a);
+console.log(modifiedarray1);
+console.log(modifiedarray2);
+
+
+// console.log(arrayc.map(elementindexproduct)
+//     .filter(isnegative));
+
+
+/// .REDUCE FUNCTION
+
+
+
+function sumallarray(arraytosum) {
+    let resultsum = 0
+    for (const element of arraytosum) {
+        resultsum = resultsum + element
+    }
+    return resultsum
+}
+
+console.log(sumallarray(testarray1));
+
+function sum(previous, current) {
+    return previous + current
+}
+
+function product(previous, current, index) {
+    return previous * current
+}
+function sumevenindex(previous, current, index) {
+    if (index % 2 === 0) {
+        return previous + current
+    } else {
+        return previous
+    }
+}
+function reduceverbose(arraytoaggregate, aggregationfunction, startingelement) {
+    let result;
+    let startingindex;
+    if (startingelement !== undefined) {
+        result = startingelement
+        startingindex = 0;
+    } else {
+        result = arraytoaggregate[0]
+        startingindex = 1;
+    }
+
+    for (let i = startingindex; i < arraytoaggregate.length; i++) {
+        const element = arraytoaggregate[i];
+        result = aggregationfunction(result, element, i)
+    }
+    return result
+}
+console.log(reduceverbose(testarray1, sum));
+console.log(reduceverbose(testarray1, product));
+console.log(reduceverbose(testarray1, sumevenindex));
+
+console.log(testarray1.reduce((previous, current, index, array) => previous + current, 0));
