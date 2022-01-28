@@ -384,3 +384,77 @@ console.log(reduceverbose(testarray1, product));
 console.log(reduceverbose(testarray1, sumevenindex));
 
 console.log(testarray1.reduce((previous, current, index, array) => previous + current, 0));
+
+
+
+function dividestring(prev, curr) {
+    if (curr[0] === "p") {
+        // if (prev[0]) {
+        //     prev[0].push(curr)
+        // } else {
+        //     prev[0]=[]
+        //     prev[0].push(curr)
+        // }
+        if (!prev[0]) {
+            prev[0] = []
+        }
+        prev[0].push(curr)
+    } else {
+        // if (prev[1]) {
+        //     prev[1].push(curr)
+        // } else {
+        //     prev[1]=[]
+        //     prev[1].push(curr)
+        // }
+        if (!prev[1]) {
+            prev[1] = []
+        }
+        prev[1].push(curr)
+    }
+    return prev
+}
+console.log(testarray2.reduce(dividestring, []));
+console.log(testarray1.reduce(sumbysign, {}));
+
+function sumbysign(prev, curr) {
+    // if (curr >= 0) {
+    //     if (prev.sumofpositive) {
+    //         prev.sumofpositive = prev.sumofpositive + curr
+    //     } else {
+    //         prev.sumofpositive = 0
+    //         prev.sumofpositive = prev.sumofpositive + curr
+    //     }
+    // } else {
+    //     if (prev.sumofnegative) {
+    //         prev.sumofnegative = prev.sumofnegative + curr
+    //     } else {
+    //         prev.sumofnegative = 0
+    //         prev.sumofnegative = prev.sumofnegative + curr
+    //     }
+    // }
+    if (curr >= 0) {
+        if (!prev.sumofpositive) {
+            prev.sumofpositive = 0
+        }
+        prev.sumofpositive += curr
+    } else {
+        if (!prev.sumofnegative) {
+            prev.sumofnegative = 0
+        }
+        prev.sumofnegative += curr
+    }
+    return prev
+}
+
+let testarray3 = ["la", "vergogna", "casa", "dannazione", "ha", "pippo", "preso", "secchio", "fuoco"]
+
+//result must be "la casa ha preso fuoco"
+
+function cleanta3(prev, curr, index) {
+    if (index % 2 === 0) {
+        return prev + curr
+    } else {
+        return prev + " "
+    }
+}
+    console.log(testarray3.reduce(cleanta3, []));
