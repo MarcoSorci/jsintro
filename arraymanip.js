@@ -383,7 +383,7 @@ console.log(reduceverbose(testarray1, sum));
 console.log(reduceverbose(testarray1, product));
 console.log(reduceverbose(testarray1, sumevenindex));
 
-console.log(testarray1.reduce((previous, current, index, array) => previous + current, 0));
+console.log(testarray1.reduce((previous, current, index, array) => previous + current, 0)); //full syntax order
 
 
 
@@ -395,7 +395,7 @@ function dividestring(prev, curr) {
         //     prev[0]=[]
         //     prev[0].push(curr)
         // }
-        if (!prev[0]) {
+        if (!prev[0]) {               //since prev[0].push(curr) happens regardless, only limit prev[0] = [] 
             prev[0] = []
         }
         prev[0].push(curr)
@@ -457,4 +457,4 @@ function cleanta3(prev, curr, index) {
         return prev + " "
     }
 }
-    console.log(testarray3.reduce(cleanta3, []));
+console.log(testarray3.reduce(cleanta3, []));

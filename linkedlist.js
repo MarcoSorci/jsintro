@@ -170,7 +170,7 @@ function nth2(list, index, startindex) {
 // }
 console.log(nth(arraytolinkedlist([10, 20, 30]), 2));
 
-console.log("COMPITO 2 - deep copy");
+console.log("COMPITO 2 - deep comparison");
 
 function deepEqual(a, b) {
     if (a === b) return true;
@@ -183,7 +183,9 @@ function deepEqual(a, b) {
     if (keysA.length != keysB.length) return false;
 
     for (let key of keysA) {
-        if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
+        if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false; 
+        //key is an index, if keys of B don't include keysA, OR
+        //running deepequal on keys and they DON'T match (has !), return false
     }
 
     return true;
@@ -194,5 +196,5 @@ console.log(deepEqual(obj, obj));
 // → true
 console.log(deepEqual(obj, { here: 1, object: 2 }));
 // → false
-console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));  //finally equal in 
 // → true
