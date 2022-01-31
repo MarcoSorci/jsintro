@@ -632,17 +632,7 @@ function buildarray(prev, curr) {
 }
 console.log(array1.reduce(buildarray, []));
 
-//reduce for string of consonants without repetition
-
-//map that changes uppercase to lowercase and viceversa, then turn into reduce
-
-//filter keeps only strings with b, then turn into reduce
-
-function buildarray2(prev, curr) {
-    prev.push(...arrayofconsonants(curr))
-    return prev
-}
-console.log(new Set(array1.reduce(buildarray2, []).join("")));
+/////////////////////////////////////////////
 
 //forEach
 
@@ -690,8 +680,8 @@ console.log(students.sort(comparestudent2));
 
 ///////////////////////
 
-let athlete1 = { name: "giovanni", surname: "landi", position: 2 }
-let athlete2 = { name: "lorena", surname: "landi", position: 2 }
+let athlete1 = { name: "lorena", surname: "landi", position: 2 }
+let athlete2 = { name: "giovanni", surname: "landi", position: 2 }
 let athlete3 = { name: "pippo", surname: "barbigli", position: 1 }
 let athlete4 = { name: "simona", surname: "perri", position: 3 }
 let athlete5 = { name: "elmo", surname: "recalcati", position: 2 }
@@ -707,10 +697,57 @@ function comparebyposition(ath1, ath2) {
 }
 
 function comparebypositionplus(ath1, ath2) {   //if position is same compares surname, if surname same use name
-    if (ath1.position > ath2.position) {
-        
-    }
+    if (ath1.position === ath2.position) {
+        if (ath1.surname != ath2.surname) {
+            return ath1.surname.localeCompare(ath2.surname)
+        } else {
+            return ath1.name.localeCompare(ath2.name)
+        }
+    } return ath1.position - ath2.position
 }
 
 console.log([...athletes].sort(comparebyposition));  //sort OVERRIDES original order, so you NEED TO SPREAD IT
+console.log([...athletes].sort((a1, a2) => a1.position - a2.position))
+
 console.log([...athletes].sort(comparebysurname));
+console.log([...athletes].sort((a1, a2) => a1.surname.localeCompare(a2.surname)))
+
+console.log([...athletes].sort(comparebypositionplus));
+console.log([...athletes].sort((a1, a2) => a1.position != a2.position ? a1.position - a2.position :
+    (a1.surname != a2.surname ? a1.surname.localeCompare(a2.surname) : a1.name.localeCompare(a2.name))));
+
+
+//let array1 = ["Pippo", "Paperino", "Gambadilegno", "Basettoni", "Clarabella", "Osvaldo"]
+
+//reduce for string of consonants without repetition
+
+
+function buildarray2(prev, curr) {
+    prev.push(...arrayofconsonants(curr))
+    return prev
+}
+console.log([...new Set(array1.reduce(buildarray2, []))].join(" ").toUpperCase());
+
+//console.log([...new Set(arrayofconsonants(string))].join(""));
+
+//map that changes uppercase to lowercase and viceversa, then turn into reduce
+
+function swapCase(letters) {
+    let newLetters = [];
+    for (let i = 0; i < letters.length; i++) {
+        if (letters[i] === letters[i].toLowerCase()) {
+            newLetters += letters[i].toUpperCase();
+        } else {
+            newLetters += letters[i].toLowerCase();
+        }
+    }
+    // console.log(newLetters);
+    return newLetters;
+}
+
+console.log(array1.map(swapCase));
+
+//filter keeps only strings with b, then turn into reduce
+
+console.log(array1.filter((e) => e.toLowerCase().includes("b")).join(", "));
+console.log(array1.reduce((p, c) => p.toLowerCase().includes("b") ? p : c));   //why tf is it stopping??
