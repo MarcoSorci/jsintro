@@ -458,3 +458,259 @@ function cleanta3(prev, curr, index) {
     }
 }
 console.log(testarray3.reduce(cleanta3, []));
+
+// function cleanta3verbose(prev, curr, index) {
+//     let tempstring = prev
+//     if (index % 2 !== 0) {
+//         return tempstring;
+//     } else {
+//         tempstring = tempstring + " " + curr;
+//         return tempstring;
+//     }  
+// //     if (index % 2 !== 0) {
+// //         return prev
+// //     } else {
+// //         return prev + " " + curr
+// //     }
+// }
+
+// console.log(testarray3.reduce(cleanta3verbose, ""));
+
+
+console.log(testarray3.reduce((p, c, i) => i % 2 !== 0 ? p : p + " " + c));
+//asks if index is odd, if yes return p, if not (even) p then space then c
+
+let array = [12, 345, -1234, 1, 0, 23456, -2, 2, 3]
+let array1 = ["Pippo", "Paperino", "Gambadilegno", "Basettoni", "Clarabella", "Osvaldo"]
+
+///////////////// biggest overall
+
+console.log(array.reduce((p, c) => c > p ? c : p));
+
+console.log(array.reduce(() => Math.max(...array)));
+
+///////////////// smallest of the negatives
+
+function lowestofnegatives(previous, current) {
+    // if (previous) {
+    //     if (current < 0) {
+    //         if (current < previous) {
+    //             return current
+    //         } else {
+    //             return previous
+    //         }
+    //     } else {
+    //         return previous
+    //     }
+    // } else {                    //if previous is undefined
+    //     if (current < 0) {      //here until you find one that's negative
+    //         return current
+    //     } else {
+    //         return previous
+    //     }
+    // }
+    if (previous) {
+        if (current < previous) {
+            return current
+        } else {
+            return previous
+        }
+    } else {
+        if (current < 0) {
+            return current
+        } else {
+            return previous
+        }
+    }
+}
+console.log(array.reduce(lowestofnegatives));
+
+console.log(array.filter((e) => e < 0).reduce(() => Math.min(...array)));
+console.log(array.filter((e) => e < 0).reduce((p, c) => c < p ? c : p));
+
+console.log(array.reduce((p, c) => c < 0 ? [...p, c] : p, []).reduce((p, c) => c < p ? c : p));
+
+/////////////////// sum of even numbers
+
+console.log(array.reduce((p, c) => c % 2 === 0 ? p + c : p));
+
+console.log(array.reduce((p, c) => c % 2 === 0 ? p + c : p, 0));
+
+////////////////////////
+
+
+let string = "piippo"
+function checkifstringcontainsvowel(string) {
+
+    let vowels = ["a", "e", "i", "o", "u"]
+
+    for (let i = 0; i < vowels.length; i++) {
+        const vowel = vowels[i];
+        if (string.includes(vowels)) {
+            return true
+        }
+
+        // if (char === "a") {
+        //     return true
+        // }
+        // if (char === "e") {
+        //     return true
+        // }
+        // if (char === "i") {
+        //     return true
+        // }
+        // if (char === "o") {
+        //     return true
+        // }
+        // if (char === "u") {
+        //     return true
+        // }
+    } return false
+}
+
+console.log(checkifstringcontainsvowel(string));
+
+//SOME AND EVERY    
+
+//array.some()            //if at least one of the cases is true, then true
+
+//array.every()           //true if all are true, if one is false it's false
+
+function checkifstringcontainsvowel2(string) {
+    // let vowels = ["a", "e", "i", "o", "u"]
+    // return vowels.some((v) => string.includes(v))
+    return ["a", "e", "i", "o", "u"].some((v) => string.includes(v))
+}
+console.log(checkifstringcontainsvowel2(string));
+
+function checkifstringnotcontainsvowel(string) {
+    return !["a", "e", "i", "o", "u"].some((v) => string.includes(v))
+}
+console.log(checkifstringcontainsvowel2(string));
+
+let numberarrayz = [2, 5, 7, 9]
+console.log(numberarrayz.every((v) => v % 2 === 0));
+/////////////////////////
+
+function arrayofvowels(string) {
+    let arrayfromstring = [...string]
+    let vowelsarray = arrayfromstring.filter(checkifstringcontainsvowel2)
+    return vowelsarray
+}
+
+function arrayofconsonants(string) {
+    let arrayfromstring = [...string]
+    let vowelsarray = arrayfromstring.filter(checkifstringnotcontainsvowel)
+    return vowelsarray
+}
+
+console.log(arrayofvowels(string).join("")); ///join converts array to string, by default separates with comma, can be changed to anything
+console.log(arrayofconsonants(string));
+
+let arrayofcon = arrayofconsonants(string)
+
+let setofconsonants = new Set(arrayofcon)   //set auto removes doubles
+
+let stringofcon = [...setofconsonants].join("")
+
+console.log(setofconsonants);
+console.log(stringofcon);
+
+console.log([...new Set(arrayofconsonants(string))].join(""));
+
+
+//////////////////////
+
+
+//reduce for array of vowels
+
+//let array1 = ["Pippo", "Paperino", "Gambadilegno", "Basettoni", "Clarabella", "Osvaldo"]
+
+function buildarray(prev, curr) {
+    prev.push(...arrayofvowels(curr))
+    return prev
+}
+console.log(array1.reduce(buildarray, []));
+
+//reduce for string of consonants without repetition
+
+//map that changes uppercase to lowercase and viceversa, then turn into reduce
+
+//filter keeps only strings with b, then turn into reduce
+
+function buildarray2(prev, curr) {
+    prev.push(...arrayofconsonants(curr))
+    return prev
+}
+console.log(new Set(array1.reduce(buildarray2, []).join("")));
+
+//forEach
+
+array1.forEach((e) => console.log(e));
+
+for (const string of array1) {
+    console.log(string.toUpperCase());
+}
+
+array1.forEach((e) => console.log(e.toUpperCase()));
+
+//sort
+
+console.log(array.sort()); //sort from smallest to biggest
+console.log(array1.sort()); //alphabetic order, numbers would come earlier
+console.log(students.sort(comparestudentsverbose)); //when objects are complex, sort can't work on its own, so it requires compare function
+
+function comparestudentsverbose(st1, st2) {  //always needs two elements for the compare func
+    if (st1.age > st2.age) {
+        return 1
+    }
+
+    if (st1.age < st2.age) {
+        return -1
+    }
+
+    if (st1.age === st2.age) {
+        return 0
+    }
+}
+
+function comparestudents(st1, st2) {
+    return st1.sex.localeCompare(st2.sex)     //compare based on default browser language for text compare
+}
+
+console.log(students.sort(comparestudents));
+
+
+function comparestudent2(st1, st2) {
+    return st1.age - st2.age
+}
+
+console.log(students.sort(comparestudent2));
+
+
+///////////////////////
+
+let athlete1 = { name: "giovanni", surname: "landi", position: 2 }
+let athlete2 = { name: "lorena", surname: "landi", position: 2 }
+let athlete3 = { name: "pippo", surname: "barbigli", position: 1 }
+let athlete4 = { name: "simona", surname: "perri", position: 3 }
+let athlete5 = { name: "elmo", surname: "recalcati", position: 2 }
+
+let athletes = [athlete1, athlete2, athlete3, athlete4, athlete5]
+
+function comparebysurname(ath1, ath2) {
+    return ath1.surname.localeCompare(ath2.surname)
+}
+
+function comparebyposition(ath1, ath2) {
+    return ath1.position - ath2.position
+}
+
+function comparebypositionplus(ath1, ath2) {   //if position is same compares surname, if surname same use name
+    if (ath1.position > ath2.position) {
+        
+    }
+}
+
+console.log([...athletes].sort(comparebyposition));  //sort OVERRIDES original order, so you NEED TO SPREAD IT
+console.log([...athletes].sort(comparebysurname));
