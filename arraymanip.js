@@ -745,9 +745,41 @@ function swapCase(letters) {
     return newLetters;
 }
 
+function switchCase(string) {
+    const firstchar = string[0]    //first and foremost use const, if you have to change it then swap to let
+    const firstcharlower = firstchar.toLowerCase()
+    const remainingstring = string.substring(1)  //substring, number from where it starts
+    const remainingstringupper = remainingstring.toUpperCase()
+    return firstcharlower + remainingstringupper
+}
+
 console.log(array1.map(swapCase));
+console.log(array1.map(switchCase));
+
+console.log(array1.map((s) => s[0].toLowerCase() + s.substring(1).toUpperCase()));
+console.log(array1.reduce((p, c) => [...p, switchCase(c)], [])); //[] è lo starting element, cuz p & c are already in the first []
+//it's needed because otherwise the first one spreads, and all other ones are switched case, NEVER BECOMING P
 
 //filter keeps only strings with b, then turn into reduce
 
+
 console.log(array1.filter((e) => e.toLowerCase().includes("b")).join(", "));
-console.log(array1.reduce((p, c) => p.toLowerCase().includes("b") ? p : c));   //why tf is it stopping??
+console.log(array1.reduce((p, c) => c.toLowerCase().includes("b") ? [...p, c] : p, []));
+
+function checkifcontainsvalue(string, stringtocheck) {
+    return string.toLowerCase().includes(stringtocheck)
+}
+
+console.log(checkifcontainsvalue("pippo", "p"))
+console.log(array1.filter((s) => checkifcontainsvalue(s, "p")))
+
+//Functions that generate other functions
+
+function checkifcontainsvalue2(stringtocheck) {
+    return (string) => string.toLowerCase().includes(stringtocheck)
+}
+const checkR = checkifcontainsvalue2("r")
+console.log(checkR("pippo"));
+
+const checkP = checkifcontainsvalue2("p")
+console.log(checkR("pippo"));
