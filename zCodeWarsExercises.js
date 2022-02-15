@@ -39,7 +39,23 @@ function random() {
     //     format = format.replace("x", range[i])
     // }
     // return format 
-    return range.reduce((p,c)=>p.replace("x",c), "+(xxx) xxx-xxxx")
+    return range.reduce((p, c) => p.replace("x", c), "+(xxx) xxx-xxxx")
 }
 
 console.log(random());
+/////////////////////////////////////
+let s1 = "testing"
+function getMiddle(s) {
+    return [...s].reduce((p, c, i, a) => a.length % 2 === 0 ? s.substring((i / 2), ((i / 2) + 2)) : a[Math.floor(i / 2)])
+}
+// function getMiddle2(s) {
+//     for (let i = 0; i < s.length; i++) {
+//         if ([...s].length % 2 === 0) {
+//             return s.substring((i / 2), ((i / 2) + 2))
+//         } else {
+//             return s[Math.floor(i / 2)]
+//         }
+//     }
+// }
+
+console.log(getMiddle(s1));
