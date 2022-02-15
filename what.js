@@ -17,3 +17,29 @@ function points(games) {
 }
 
 console.log(points(scores));
+
+
+/////////////////////////////////////
+// generate a phone number in the american format
+
+function base() {
+    let range = [...new Array(10).keys()] //this prints the keys(indices up to the number given (starting from 0 ofc))
+    let format = "+(xxx) xxx-xxxx"
+    for (let i = 0; i < range.length; i++) {
+        format = format.replace("x", range[i])
+    }
+    return format
+}
+console.log(base());
+
+function random() {
+    let range = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10))
+    // let format = "+(xxx) xxx-xxxx"
+    // for (let i = 0; i < range.length; i++) {
+    //     format = format.replace("x", range[i])
+    // }
+    // return format 
+    return range.reduce((p,c)=>p.replace("x",c), "+(xxx) xxx-xxxx")
+}
+
+console.log(random());
