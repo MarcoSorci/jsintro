@@ -146,3 +146,50 @@ console.log("expecting 55montagna1, getting: ", incrementString2("55montagna"));
 
 /////////////////////////////////////
 
+let h1 = []
+let h2 = ["Peter"]
+let h3 = ["Jacob", "Alex"]
+let h4 = ["Max", "John", "Mark"]
+let h5 = ["Alex", "Jacob", "Mark", "Max"]
+
+function likes(names) {
+    if (names.length === 1) {
+        return names[0] + " likes this"
+    } else if (names.length === 2) {
+        return names[0] + " and " + names[1] + " like this"
+    } else if (names.length === 3) {
+        return names[0] + ", " + names[1] + " and " + names[2] + " like this"
+    } else if (names.length >= 4) {
+        return names[0] + ", " + names[1] + " and " + (names.length - 2) + " others like this"
+    }
+    return "no one likes this"
+}
+
+function likes2(names) {
+    if (names.length === 1) {
+        return names[0] + " likes this"
+    } else if (names.length === 2) {
+        return names[0] + " and " + names[1] + " like this"
+    } else if (names.length >= 3) {
+        let cond;
+        if (names.length === 3) {
+            cond = names[2] + " like this"
+        } else {
+            cond = (names.length - 2) + " others like this"
+        }
+        return names[0] + ", " + names[1] + " and " + cond
+    }
+    return "no one likes this"
+}
+
+function likes3(names) {
+    return names.reduce((p, c, i, a) => a.length === 1 ? a[0] + " likes this" : a.length === 2 ? a[0] + " and " + a[1] + " like this" : a.length === 3 ? a[0] + ", " + a[1] + " and " + a[2] + " like this" : a.length >= 4 ? a[0] + ", " + a[1] + " and " + (a.length - 2) + " others like this" : "no one likes this")
+    //reduce doesn't work on empty arrays, and case 1 doesn't work for some reason
+}
+
+console.log(likes(h5));
+console.log(likes2(h5));
+console.log(likes3(h2));
+
+/////////////////////////////////////
+
