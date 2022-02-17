@@ -193,3 +193,120 @@ console.log(likes3(h2));
 
 /////////////////////////////////////
 
+function openOrSenior(data) {
+    let arr = []
+    for (const item of data) {
+        if (item[0] >= 55 && item[1] > 7) {
+            arr.push("Senior")
+        } else {
+            arr.push("Open")
+        }
+    } return arr
+}
+
+function openOrSenior2(data) {
+    let arr = []
+    return data.reduce((p) => p[0] >= 55 && p[1] > 7 ? arr.push("Senior") : arr.push("Open"))  //for some reason codewars doesn't like it
+}
+
+let input = [[45, 12], [55, 21], [19, -2], [104, 20]]
+
+console.log(openOrSenior(input));
+
+/////////////////////////////////////
+
+let aww = [1, 1, 1, 2, 1, 1]
+
+function findUniq(arr) {
+    return arr.reduce((p, c) => p !== c ? c : p)
+}
+
+console.log(findUniq(aww));
+
+
+/////////////////////////////////////
+
+//start from bottom 
+
+function mountainsOfHoiyama(width) {
+
+    let startingNumber = 0
+    let actualWidth = width
+    let array = []
+
+    while (actualWidth > 0) {
+        let actualNumber = startingNumber
+
+        for (let i = 0; i < actualWidth; i++) {
+            if (i <= actualWidth / 2) {
+                actualNumber++
+            } else {
+                actualNumber--
+            } array.push(actualNumber)
+        }
+        actualWidth = actualWidth - 2
+        startingNumber = startingNumber + 2
+
+    }
+    return array.reduce((p, c) => p + c)
+
+}
+
+console.log(mountainsOfHoiyama(3));
+
+function mountainsOfHoiyama2(width) {                         //very very weird
+    return (width + 1) * (width ** 2 + 2 + width) / 8
+}
+
+console.log(mountainsOfHoiyama2(3));
+
+/////////////////////////////////////
+
+
+function primeTo(number) {
+    const primeNumbers = [2]
+    for (let i = 3; i <= number; i++) {
+        let numbertoCheck = i
+        let isPrime = true
+        for (const prime of primeNumbers) {
+            if (numbertoCheck % prime === 0) {
+                isPrime = false
+                break
+            }
+        }
+        if (isPrime) {
+            primeNumbers.push(numbertoCheck)
+        }
+    } return primeNumbers
+}
+
+function primeTo4(number) {
+    let array = Array.from({ length: number - 2 }, (v, i) => i + 3)
+    return array.reduce((p, c) => p.some(e => c % e === 0) ? p : [...p, c], [2])
+}
+
+function primeTo5(number) {
+    let array = Array.from({ length: number - 1 }, (v, i) => i + 2)
+    return array.filter(c => !array.some(e => (c % e === 0 && c !== e)))
+}
+
+console.log(primeTo5(11));
+console.log(primeTo(11));
+
+
+
+/////////////////////////////////////
+
+
+function solution(string) {
+    let newString;
+    for (let i = 0; i < string.length; i++) {
+        const elem = string[i];
+        if (elem === elem.toUpperCase()) {
+            newString = string.slice(elem)
+        }
+
+    } return newString
+}
+
+console.log(solution("camelCasing"));
