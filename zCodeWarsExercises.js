@@ -299,12 +299,14 @@ console.log(primeTo(11));
 
 
 function solution(string) {
-    let newString;
+    let newString = "";
     for (let i = 0; i < string.length; i++) {
         const elem = string[i];
         if (elem === elem.toUpperCase()) {
-            newString = string.slice(elem)
-        }
+            newString += (" " + elem)
+        } else{
+            newString += elem
+        } 
 
     } return newString
 }
