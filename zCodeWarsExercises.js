@@ -312,3 +312,13 @@ function solution(string) {
 }
 
 console.log(solution("camelCasing"));
+
+/////////////////////////////////////
+
+function arrayDiff(a,b) {
+    return a.filter(x => !b.includes(x));
+}
+
+console.log(arrayDiff([1,2,2,2,3],[2]));
+
+/////////////////////////////////////

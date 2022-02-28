@@ -11,7 +11,7 @@ for (let i = 0; i < secondArray.length; i++) {  //when typing FOR use TAB to cyc
     console.log(element);
 }
 
-for (const element of secondArray) {  //FOROF, short version of that one up top, only if idc about index
+for (const element of secondArray) {  //FOROF, short version of that one up top, only if ydc about index
     console.log(element);
 }
 
